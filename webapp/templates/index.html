@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFOC Interface</title>
+    <style>
+        #consoleOutput {
+            width: 80%;
+            height: 300px;
+            border: 1px solid black;
+            overflow-y: scroll;
+            background-color: black;
+            color: lime;
+            padding: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        #statusText {
+            margin-top: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>MFOC Command Interface</h1>
+    <form id="mfocForm">
+        <label for="output_filename">Output File Name (without .dmp):</label>
+        <input type="text" id="output_filename" name="output_filename" required>
+        <button type="submit">Execute MFOC</button>
+    </form>
+    <h2>Console Output:</h2>
+    <div id="consoleOutput">Waiting for command...</div>
+    <div id="statusText">Status: Waiting...</div>
+
+    <script>
+        document.getElementById('mfocForm').onsubmit = function(event) {
+            event.preventDefault();
+            var outputDiv = document.getElementById('consoleOutput');
+            var statusDiv = document.getElementById('statusText');
+            outputDiv.innerHTML = 'Executing command...';
+            statusDiv.innerHTML = 'Status: Executing...';
+            var formData = new FormData(this);
+            fetch('/', {method: 'POST', body: formData})
+                .then(response => response.body)
+                .then(body => {
+                    const reader = body.getReader();
+                    return new ReadableStream({
+                        start(controller) {
+                            function push() {
+                                reader.read().then(({done, value}) => {
+                                    if (done) {
+                                        controller.close();
+                                        return;
+                                    }
+                                    const chunk = new TextDecoder().decode(value);
+                                    outputDiv.innerHTML += chunk;
+                                    outputDiv.scrollTop = outputDiv.scrollHeight; // Auto-scroll
+                                    // Parse status from chunk
+                                    const statusMatch = chunk.match(/Status: (.*)/);
+                                    if (statusMatch) {
+                                        statusDiv.innerHTML = `Status: ${statusMatch[1]}`;
+                                    }
+                                    push();
+                                });
+                            }
+                            push();
+                        }
+                    });
+                })
+                .then(stream => new Response(stream))
+                .catch(err => console.error(err));
+        };
+    </script>
+</body>
+</html>
