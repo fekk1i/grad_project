@@ -1,0 +1,154 @@
+/* General body styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333; /* Dark gray background */
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Shared container styling for login, register, and main container */
+.container {
+    width: 95%;
+    max-width: 600px; /* Consistent width across all containers */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #222; /* Uniform background for all containers */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Consistent shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content vertically within containers */
+    box-sizing: border-box; /* Ensure padding is included in the height calculation */
+    height: 90vh; /* Set height to occupy 90% of the viewport height */
+    overflow-y: auto; /* Add vertical scrolling if needed */
+    position: relative;
+}
+
+.login-container, .register-container {
+    width: 95%;
+    max-width: 600px; /* Consistent width across all containers */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #222; /* Uniform background for all containers */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5); /* Consistent shadow for depth */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content vertically within containers */
+    box-sizing: border-box; /* Ensure padding is included in the height calculation */
+    min-height: 200px; /* Set height to occupy 90% of the viewport height */
+    overflow-y: auto; /* Add vertical scrolling if needed */
+    position: relative;
+}
+
+/* Header styling to contain the logout button */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* Logout button styling */
+.logout-button, .how-to-button {
+    background-color: #FFC107;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.logout-button:hover {
+    background-color: #E0A800;
+}
+
+/* Text alignment for headers within all containers */
+.text-center, .login-container h1, .register-container h1 {
+    text-align: center;
+    margin-bottom: 20px; /* Space between header and content */
+    font-size: 1.5em; /* Slightly larger text for better visibility */
+}
+
+/* Styling for form inputs across the application */
+.input-group label, .file-selection label,
+.login-container label, .register-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control, .form-select,
+.login-container input, .register-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444; /* Lighter than the container for visibility */
+    color: white;
+}
+
+/* Button styling across all pages */
+.action-button, .refresh-button,
+.login-container button, .register-container button {
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background-color: #FFC107; /* Vibrant yellow for visibility and aesthetics */
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.action-button:hover, .refresh-button:hover,
+.login-container button:hover, .register-container button:hover {
+    background-color: #E0A800; /* Darker shade on hover for interactive feedback */
+}
+
+/* Live console and status indicator styling */
+.console-output {
+    background-color: #444; /* Dark background for contrast */
+    color: #EEE;
+    padding: 10px;
+    border-radius: 5px;
+    flex-grow: 1; /* Allow the console to grow and take up remaining space */
+    overflow-y: auto; /* Allow vertical scrolling */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.console-output pre {
+    white-space: pre-wrap; /* Preserve white space and line breaks */
+    word-wrap: break-word; /* Ensure words break correctly */
+}
+
+/* Status indicator styling */
+.status-indicator p {
+    background-color: #444; /* Dark background for contrast */
+    color: #EEE;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center; /* Centered text for status */
+    margin: 0; /* Remove margin for better spacing */
+    width: 100%; /* Ensure it fits within the container */
+}
+
+/* Responsive adjustments for smaller devices */
+@media (max-width: 768px) {
+    .container, .login-container, .register-container {
+        width: 98%; /* More width for smaller devices */
+        margin: 10px;
+        padding: 10px;
+    }
+    .action-button, .refresh-button {
+        font-size: 14px; /* Smaller font size for smaller screens */
+    }
+}

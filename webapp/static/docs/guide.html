@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ-Clone User Guide</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> 
+    <link rel="icon" href="/static/icons/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">EZ-Clone Operations Panel User Guide</h1>
+        
+        <section>
+            <h2>Overview</h2>
+            <p>The EZ-Clone Operations Panel is a web-based application designed for NFC card management using a Raspberry Pi equipped with a PN532 NFC module. This tool allows users to read, write, and scan NFC tags, particularly focusing on MIFARE Classic 1K cards.</p>
+        </section>
+
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Start MFOC Reading:</strong> Initiate a reading session to dump the contents of a MIFARE Classic 1K card.</li>
+                <li><strong>Execute NFC Write:</strong> Write data to a MIFARE Classic 1K card using previously saved dump files.</li>
+                <li><strong>Perform NFC Scan:</strong> Scan for nearby NFC tags to check if they are MIFARE Classic 1K and retrieve their UID (Unique Identifier).</li>
+                <li><strong>Manage .dmp Files:</strong> View and refresh the list of available dump files stored on the system.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Getting Started</h2>
+            <h3>1. Access the Application</h3>
+            <p>Navigate to the web address provided by the system administrator, typically something like <code>http://raspberrypi.local</code> or an IP address, from any standard web browser.</p>
+            
+            <h3>2. Read a Card</h3>
+            <p>Enter a filename in the "Filename for MFOC Output" field and click "Start MFOC Reading" to dump the data of an inserted NFC card into the specified file. The output will be displayed in the "Live Output Console" area.</p>
+            
+            <h3>3. Write to a Card</h3>
+            <p>To write to a card, both the source (previously dumped) and target (blank card) must have corresponding dump files. Select the appropriate source and target files from the dropdown menus, then click "Execute NFC Write" to begin the process. The progress and results will appear in the "Live Output Console".</p>
+            
+            <h3>4. Scan for NFC Tags</h3>
+            <p>Click on "Perform NFC Scan" to search for nearby NFC tags. The scanning results, including the type of card and its UID, will be displayed in the "Live Output Console".</p>
+        </section>
+
+        <section>
+            <h2>Troubleshooting & Support</h2>
+            <p>If you encounter issues or need help, check the "Live Output Console" for any error messages, ensure the NFC reader is properly connected and the Raspberry Pi is powered on. For persistent issues, contact the system administrator or technical support team.</p>
+        </section>
+    </div>
+</body>
+</html>

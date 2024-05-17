@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ-Clone Operations Panel</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/script.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="/static/icons/favicon.ico"> <!-- Link to the favicon -->
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="how-to-button" onclick="window.location.href='/static/docs/guide.html'">How to Use</button>
+            <button class="logout-button" onclick="logout()">Logout</button>
+        </div>
+        <h1 class="text-center">EZ-Clone Operations Panel</h1>
+        
+        <div class="input-group">
+            <label for="outputFilename">Filename for MFOC Output:</label>
+            <input type="text" id="outputFilename" class="form-control" placeholder="Enter filename">
+        </div>
+
+        <div class="actions">
+            <button class="action-button" onclick="runMFoc()">
+                📖 Start MFOC Reading
+            </button>
+            <button class="action-button" onclick="writeCard()">
+                ✍️ Execute NFC Write
+            </button>
+            <button class="action-button" onclick="scanNFC()">
+                🔍 Perform NFC Scan
+            </button>
+        </div>
+
+        <div class="file-selection">
+            <h2 class="text-center">Available .dmp Files</h2>
+            <label for="sourceDmpFileList">Select Source .dmp File:</label>
+            <select id="sourceDmpFileList" class="form-select"></select>
+
+            <label for="targetDmpFileList">Select Target .dmp File:</label>
+            <select id="targetDmpFileList" class="form-select"></select>
+
+            <button class="refresh-button" onclick="fetchDmpFiles()">Refresh Files List</button>
+        </div>
+
+        <div class="console-output">
+            <label for="console">Live Output Console:</label>
+            <pre id="console" class="console"></pre>
+        </div>
+        <div class="status-indicator">
+            <p id="statusText">Ready...</p>  <!-- Initial status message -->
+        </div>
+    </div>
+</body>
+</html>
